@@ -50,7 +50,7 @@ resource "aws_route_table" "public_route_table" {
 }
 
 resource "aws_eip" "static" {
-  vpc      = true
+  vpc = true
 }
 
 resource "aws_nat_gateway" "nat_gateway" {
@@ -72,4 +72,14 @@ resource "aws_route_table" "ptivate_route_table" {
   tags = {
     Name = "private route table"
   }
+}
+
+resource "aws_route_table_association" "public" {
+  subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.public_route_table.id
+}
+
+resource "aws_route_table_association" "private" {
+  subnet_id      = aws_subnet.private.id
+  route_table_id = aws_route_table.ptivate_route_table.id
 }
