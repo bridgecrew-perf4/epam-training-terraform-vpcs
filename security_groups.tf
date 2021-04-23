@@ -55,7 +55,7 @@ resource "aws_security_group" "wordpress-sg" {
 
 resource "aws_security_group" "database-sg" {
   name        = "allow 1521 to db"
-  description = "allow 152 to database"
+  description = "allow 1521 to database"
   vpc_id      = aws_vpc.wordpress_production.id
 
   ingress {
@@ -63,14 +63,14 @@ resource "aws_security_group" "database-sg" {
     from_port   = 1521
     to_port     = 1521
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["10.168.30.0/24"]
   }
 
   egress {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
-    cidr_blocks      = ["10.168.30.0/24"]
+    cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
 
