@@ -1,6 +1,6 @@
 resource "aws_security_group" "bastion-sg" {
   name        = "allow ssh to bastion"
-  description = "Allow TLS inbound traffic"
+  description = "Allow SSH inbound traffic"
   vpc_id      = aws_vpc.wordpress_production.id
 
   ingress {
