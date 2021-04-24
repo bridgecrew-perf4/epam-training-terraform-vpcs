@@ -5,6 +5,7 @@ resource "aws_vpc" "wordpress_production" {
 resource "aws_subnet" "public" {
   vpc_id     = aws_vpc.wordpress_production.id
   cidr_block = "10.168.168.0/24"
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "load_balancer"
@@ -14,6 +15,7 @@ resource "aws_subnet" "public" {
 resource "aws_subnet" "private" {
   vpc_id     = aws_vpc.wordpress_production.id
   cidr_block = "10.168.30.0/24"
+  
 
   tags = {
     Name = "web_servers"
