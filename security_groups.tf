@@ -30,7 +30,7 @@ resource "aws_security_group" "wordpress-sg" {
   vpc_id      = aws_vpc.wordpress_production.id
 
   dynamic "ingress" {
-    for_each = ["80", "443"]
+    for_each = ["80", "443", "22"]
     content {
       description = "allow http and https from public"
       from_port   = ingress.value
