@@ -85,3 +85,8 @@ resource "aws_route_table_association" "private" {
   subnet_id      = aws_subnet.private.id
   route_table_id = aws_route_table.ptivate_route_table.id
 }
+
+resource "aws_db_subnet_group" "rds" {
+  subnet_ids = [ aws_subnet.db.id, aws_subnet.private.id ]
+  
+}

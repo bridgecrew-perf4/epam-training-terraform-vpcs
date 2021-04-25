@@ -14,6 +14,8 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"]
 }
 
-data "aws_availability_zones" "current" {
-  
+/*
+data "aws_db_instance" "database" {
+  db_instance_identifier = "my-test-database"
 }
+*/

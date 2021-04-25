@@ -1,8 +1,9 @@
+
 resource "aws_elb" "wordpress" {
     name = "wordpress-load-balancer"
  #   availability_zones = [ data.aws_availability_zones.current.names[0], data.aws_availability_zones.current.names[1] ]
-    security_groups = [ aws_security_group.wordpress-sg.id ]
-    subnets = [ aws_subnet.public.id ]
+    security_groups = [ aws_security_group.elb_sg.id ]
+    subnets = [ aws_subnet.public.id, aws_subnet.private.id ]
     listener {
       lb_port = 80
       lb_protocol = "http"
@@ -12,7 +13,7 @@ resource "aws_elb" "wordpress" {
 health_check {
     healthy_threshold   = 2
     unhealthy_threshold = 2
-    target              = "HTTP:80/"
+    target              = "TCP:80"
     timeout             = 3
     interval            = 30
   }
