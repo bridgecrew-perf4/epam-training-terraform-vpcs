@@ -39,7 +39,8 @@ resource "null_resource" "cp_ssh_file" {
   depends_on = [
     aws_db_instance.epam_training_wpdb1,
     aws_instance.wordpress1,
-    aws_instance.wordpress2
+    aws_instance.wordpress2,
+    aws_instance.bastion
   ]
 }
 
@@ -52,7 +53,8 @@ resource "null_resource" "run_ansible" {
     null_resource.cp_ssh_file,
     aws_db_instance.epam_training_wpdb1,
     aws_instance.wordpress1,
-    aws_instance.wordpress2
+    aws_instance.wordpress2,
+    aws_instance.bastion
   ]
 }
 
