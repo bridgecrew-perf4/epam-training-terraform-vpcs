@@ -3,7 +3,7 @@ resource "aws_elb" "wordpress" {
     name = "wordpress-load-balancer"
  #   availability_zones = [ data.aws_availability_zones.current.names[0], data.aws_availability_zones.current.names[1] ]
     security_groups = [ aws_security_group.elb_sg.id ]
-    subnets = [ aws_subnet.public.id, aws_subnet.private.id ]
+    subnets = [ aws_subnet.public.id ]
     listener {
       lb_port = 80
       lb_protocol = "http"
