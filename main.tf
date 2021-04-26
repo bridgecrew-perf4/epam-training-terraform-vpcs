@@ -10,7 +10,7 @@ resource "local_file" "sshconfig" {
  content = templatefile("config.tmpl",
  {
      wp1ip       = aws_instance.wordpress1.private_ip
-     wp2ip       = aws_instance.wordpress1.private_ip
+     wp2ip       = aws_instance.wordpress2.private_ip
      bastionip   = aws_instance.bastion.public_ip
  }
  )
