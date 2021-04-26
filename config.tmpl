@@ -10,7 +10,7 @@ Host wordpress1
   IdentityFile ~/.ssh/aws_key
 
 Host wordpress2
-  HostName ${wp1ip}
+  HostName ${wp2ip}
   ProxyJump  bastion
   User ubuntu  
   IdentityFile ~/.ssh/aws_key
